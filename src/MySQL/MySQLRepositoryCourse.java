@@ -132,7 +132,7 @@ public class MySQLRepositoryCourse implements ICourse {
     }
 
     @Override
-    public void insertCourse(Course course, User teacher, String strStartDate, String strEndDate) throws Exception {
+    public void insertCourse(Course course, User teacher) throws Exception {
 
         //get db context
         Session session = context.getContext();
@@ -160,13 +160,13 @@ public class MySQLRepositoryCourse implements ICourse {
         //set the teacher for the course
         course.setTeacher(courseTeacher);
 
-        //convert the dates from string to date
-        Date startDate = DateUtils.parseDate(strStartDate);
-        Date endDate = DateUtils.parseDate(strEndDate);
+//        //convert the dates from string to date
+//        Date startDate = DateUtils.parseDate(strStartDate);
+//        Date endDate = DateUtils.parseDate(strEndDate);
 
         //set the dates on the course object
-        course.setStartDate(startDate);
-        course.setFinishDate(endDate);
+//        course.setStartDate(startDate);
+//        course.setFinishDate(endDate);
 
         //save the course
         session.save(course);

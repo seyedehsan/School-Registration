@@ -15,7 +15,7 @@ public interface ICourse {
 
     Course findCourse(short id);
 
-    void insertCourse(Course course, User teacher, String strStartDate, String strEndDate) throws Exception;
+    void insertCourse(Course course, User teacher) throws Exception;
 
     void updateCourse(Course course) throws Exception;
 }
