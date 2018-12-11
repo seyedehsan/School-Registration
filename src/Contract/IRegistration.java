@@ -17,4 +17,6 @@ public interface IRegistration {
     void insertRegistration(Registration reg, User student, Course course) throws Exception;
 
     void updateRegistration(Registration reg) throws Exception;
+
+    int NumberRegistrationsInACourse (Course course);
 }

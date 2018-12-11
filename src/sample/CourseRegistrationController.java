@@ -12,7 +12,11 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class CourseRegistrationController {
@@ -38,16 +42,17 @@ public class CourseRegistrationController {
     private TextField numberOfSeats;
 
     @FXML
-    private Label seatsAvailable;
-
-    @FXML
     private TextArea courseDescription;
 
     @FXML
-    private Button btnCancel;
+    private Button btnClear;
 
     @FXML
     private Button btnSaveCourse;
+
+    @FXML
+    private Button btnReturn;
+
 
     //do the injections to get access to the database
     //read spring config java class
@@ -60,7 +65,7 @@ public class CourseRegistrationController {
     IUser sqlUser = context.getBean("userRepository", IUser.class);
 
     @FXML
-    private void initialize() {
+    public void initialize(Course theCourse) {
 
         //create list of Users of Access Level 2 = teacher
         ObservableList<User> listOfTeachers = FXCollections.observableArrayList(sqlUser.getUserByAccess((short)2));
@@ -69,7 +74,9 @@ public class CourseRegistrationController {
         teacherCombo.setItems(listOfTeachers);
 
         //create a new course object
-        Course newCourse = new Course();
+        Course newCourse = theCourse;
+
+
 
         //retrieve the information from the form controllers when the save button is clicked
         btnSaveCourse.setOnAction(new EventHandler<ActionEvent>() {
@@ -78,8 +85,9 @@ public class CourseRegistrationController {
 
                 //check the mandatory fields are complete
                 //check if the values are correct
-                //call validation method to check
-                if (checkForm() && checkNumber()) {
+                //check if the dates are correct
+                //call the validations method to check
+                if (checkForm() && checkNumber() && checkDates()) {
 
                     try {
 
@@ -87,7 +95,7 @@ public class CourseRegistrationController {
                         newCourse.setCourseName(courseName.getText());
                         newCourse.setNumberOfHours(Short.parseShort(numberOfHours.getText()));
                         newCourse.setTotalSeats(Short.parseShort(numberOfSeats.getText()));
-                        newCourse.setSeatsAvailable(Short.parseShort(seatsAvailable.getText()));
+                        newCourse.setSeatsAvailable(Short.parseShort(numberOfSeats.getText()));
                         newCourse.setCourseDescription(courseDescription.getText());
 
                         //convert Date in the form java.time.local to java.util.date
@@ -102,28 +110,52 @@ public class CourseRegistrationController {
                         User teacher = (User)teacherCombo.getSelectionModel().getSelectedItem();
 
                         //insert the new course in the database
-                        //ADD A CHECKING IN THE INSERT METHOD TO DETECT IF THE COURSE ALREADY EXISTS
-                        //OVERWRITE EQUALS METHOD OR COMPARABLE
                         sqlCourse.insertCourse(newCourse, teacher);
 
                         //** pop-up window saying the course was saved **
-                        //clean-up the form
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setTitle("Confirmation");
+                        alert.setContentText("Course has been saved !");
+                        alert.showAndWait();
 
+                        //clean-up the form
+                        clearForm();
 
                     } catch (Exception ex) {
-
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setContentText(ex.toString());
+                        alert.showAndWait();
                         System.out.println(ex + ": Database Error");
                     }
 
                 } else {
-
-                    System.out.println("Missing or Invalid fields.");
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("Missing or Invalid fields.");
+                    alert.showAndWait();
                 }
             }
         });
+
+        //clear form button event
+        btnClear.setOnAction(e-> clearForm());
+
+        //add action to the back button
+
     }
 
+    public void initializeFields(Course course) {
 
+      //correct the return type of getStartDate on the course, and adapt the list thing
+        //create an additional getter that returns as date type
+
+        courseName.setText(course.getCourseName());
+        numberOfHours.setText(String.valueOf(course.getNumberOfHours()));
+        teacherCombo.getSelectionModel().select(course.getTeacher());
+//        startDatePicker.setValue(course.getStartDate());
+//        finishDatePicker.setValue(course.getFinishDate());
+        numberOfSeats.setText(String.valueOf(course.getTotalSeats()));
+        courseDescription.setText(course.getCourseDescription());
+    }
 
     //method to check if the form is complete
     public boolean checkForm() {
@@ -142,6 +174,7 @@ public class CourseRegistrationController {
         return isComplete;
     }
 
+    //method to check if the user input is of number type
     public boolean checkNumber() {
 
         boolean isNumber = true;
@@ -158,6 +191,32 @@ public class CourseRegistrationController {
         }
 
         return isNumber;
+    }
+
+    //check if the start and finish dates of the course are correct
+    public boolean checkDates() {
+
+        boolean datesCorrect = true;
+
+        if(startDatePicker.getValue().isBefore(java.time.LocalDate.now()) ||
+           startDatePicker.getValue().isAfter(finishDatePicker.getValue())) {
+
+            datesCorrect = false;
+        }
+
+        return datesCorrect;
+    }
+
+    //method to clear the form either by btn click or after saving a new course
+    public void clearForm() {
+
+        courseName.setText(null);
+        numberOfHours.setText(null);
+        teacherCombo.getSelectionModel().clearSelection();
+        startDatePicker.setValue(null);
+        finishDatePicker.setValue(null);
+        numberOfSeats.setText(null);
+        courseDescription.setText(null);
     }
 
 

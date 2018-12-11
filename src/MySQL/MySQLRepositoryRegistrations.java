@@ -42,6 +42,8 @@ public class MySQLRepositoryRegistrations implements Contract.IRegistration {
         return registrations;
     }
 
+
+
     @Override
     public Registration findRegistration(short id) {
 
@@ -162,5 +164,38 @@ public class MySQLRepositoryRegistrations implements Contract.IRegistration {
         session.close();
 
         context.closeFactory();
+    }
+
+    @Override
+    public int NumberRegistrationsInACourse(Course course) {
+
+        //get db context
+        Session session = context.getContext();
+
+        //begin transaction
+        session.beginTransaction();
+
+        int counter = 0;
+
+        List<Registration> allRegistrations = getAllRegistrations();
+
+        for (Registration items: allRegistrations) {
+
+            if(course.getId() == items.getCourse().getId()) {
+
+                counter++;
+            }
+
+        }
+
+        //commit transaction
+        session.getTransaction().commit();
+
+        session.close();
+
+        context.closeFactory();
+
+        return counter;
+
     }
 }

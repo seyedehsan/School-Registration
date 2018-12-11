@@ -160,19 +160,29 @@ public class MySQLRepositoryCourse implements ICourse {
         //set the teacher for the course
         course.setTeacher(courseTeacher);
 
-//        //convert the dates from string to date
-//        Date startDate = DateUtils.parseDate(strStartDate);
-//        Date endDate = DateUtils.parseDate(strEndDate);
+        //check if the course already exists
+        List<Course> allCourses = getAllCourses();
+        boolean unique = true;
 
-        //set the dates on the course object
-//        course.setStartDate(startDate);
-//        course.setFinishDate(endDate);
+        for(Course items : allCourses) {
 
-        //save the course
-        session.save(course);
+            if(course.getCourseName().equals(items.getCourseName())) {
+                unique = false;
+            }
+        }
 
-        //commit transaction
-        session.getTransaction().commit();
+        if(unique) {
+
+            //save the course
+            session.save(course);
+
+            //commit transaction
+            session.getTransaction().commit();
+
+        } else {
+
+            throw new Exception("This course already exists.");
+        }
 
         //close session
         session.close();

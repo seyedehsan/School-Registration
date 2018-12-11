@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.CourseListController">
    <children>
-      <GridPane alignment="CENTER" layoutX="16.0" layoutY="14.0" prefHeight="369.0" prefWidth="564.0">
+      <GridPane alignment="CENTER" layoutX="18.0" layoutY="16.0" prefHeight="369.0" prefWidth="564.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="427.0" minWidth="10.0" prefWidth="420.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="361.0" minWidth="10.0" prefWidth="142.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="427.0" minWidth="10.0" prefWidth="185.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="361.0" minWidth="10.0" prefWidth="212.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="361.0" minWidth="10.0" prefWidth="172.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="59.0" valignment="CENTER" vgrow="SOMETIMES" />
@@ -19,22 +22,25 @@
             <RowConstraints maxHeight="233.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" text="Course List" textAlignment="CENTER" GridPane.halignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Course List" textAlignment="CENTER" GridPane.columnSpan="3" GridPane.halignment="CENTER">
                <font>
                   <Font name="Times New Roman Bold" size="25.0" />
                </font>
             </Label>
-            <TreeTableView prefHeight="237.0" prefWidth="380.0" GridPane.rowIndex="1" GridPane.rowSpan="3">
+            <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#editCourse" prefHeight="25.0" prefWidth="75.0" text="EDIT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#deleteCourse" prefHeight="25.0" prefWidth="75.0" text="DELETE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Button fx:id="btnBack" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="BACK" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <TableView fx:id="tableCourses" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 11;" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
               <columns>
-                <TreeTableColumn prefWidth="116.0" text="Course Name" />
-                <TreeTableColumn prefWidth="98.0" text="Teacher" />
-                  <TreeTableColumn prefWidth="97.0" text="Start Date" />
-                  <TreeTableColumn prefWidth="108.0" text="Finish Date" />
+                <TableColumn fx:id="courseNameColumn" prefWidth="107.0" text="Course Name" />
+                <TableColumn fx:id="teacherNameColumn" prefWidth="95.0" text="Teacher" />
+                  <TableColumn fx:id="startDateColumn" prefWidth="83.0" text="Start Date" />
+                  <TableColumn fx:id="endDateColumn" prefWidth="82.0" text="End Date" />
+                  <TableColumn fx:id="numberOfHoursColumn" prefWidth="47.0" text="Hours" />
+                  <TableColumn fx:id="totalSeatsColumn" prefWidth="63.0" text="Total Seats" />
+                  <TableColumn fx:id="seatsAvailableColumn" prefWidth="86.0" text="Seats Available" />
               </columns>
-            </TreeTableView>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="EDIT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="75.0" text="DELETE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="EXIT" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            </TableView>
          </children>
       </GridPane>
    </children>
