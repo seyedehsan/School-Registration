@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <GridPane layoutX="12.0" layoutY="14.0" prefHeight="370.0" prefWidth="569.0">
@@ -34,16 +36,16 @@
             <Label text="Number of seats: *" GridPane.rowIndex="6" />
             <Label text="Seats Available:" GridPane.rowIndex="7" />
             <Label text="Course Description:" GridPane.rowIndex="8" />
-            <TextField prefHeight="27.0" prefWidth="375.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
-            <TextField prefHeight="27.0" prefWidth="91.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ChoiceBox prefHeight="27.0" prefWidth="222.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker prefHeight="27.0" prefWidth="221.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <DatePicker prefHeight="27.0" prefWidth="221.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField prefHeight="27.0" prefWidth="91.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label text="0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" GridPane.rowSpan="2" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" text="CANCEL" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" text="SAVE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
+            <TextField fx:id="courseName" prefHeight="27.0" prefWidth="375.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+            <TextField fx:id="numberOfHours" prefHeight="27.0" prefWidth="91.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="teacherCombo" prefHeight="27.0" prefWidth="222.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <DatePicker fx:id="startDatePicker" prefHeight="27.0" prefWidth="221.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker fx:id="finishDatePicker" prefHeight="27.0" prefWidth="221.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="numberOfSeats" prefHeight="27.0" prefWidth="91.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label fx:id="seatsAvailable" text="0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextArea fx:id="courseDescription" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="8" GridPane.rowSpan="2" />
+            <Button fx:id="btnCancel" mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" text="CANCEL" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
+            <Button fx:id="btnSaveCourse" mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" text="SAVE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
             <Label text="Create a Course" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                <font>
                   <Font name="Times New Roman Bold" size="20.0" />

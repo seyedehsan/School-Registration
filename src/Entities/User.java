@@ -19,8 +19,11 @@ public class User {
     @Column(name="last_name")
     private String lastName;
 
-    @Column(name="phone")
-    private String phoneNumber;
+    @Column(name="sex")
+    private char sex;
+
+    @Column(name="email")
+    private String email;
 
     @Column(name="address")
     private String address;
@@ -50,12 +53,13 @@ public class User {
 
     }
 
-    public User(String firstName, String lastName, String phoneNumber,
+    public User(String firstName, String lastName, char sex, String email,
                 String address, String city, String state, String postalCode,
                 String pwd) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+        this.sex = sex;
+        this.email = email;
         this.address = address;
         this.city = city;
         this.state = state;
@@ -75,8 +79,12 @@ public class User {
         return lastName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public char getSex() {
+        return sex;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public String getAddress() {
@@ -115,8 +123,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setSex(char sex) {
+        this.sex = sex;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setAddress(String address) {
