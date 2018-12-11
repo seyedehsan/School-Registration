@@ -76,7 +76,7 @@ public class CourseRegistrationController {
         //create a new course object
         Course newCourse = theCourse;
 
-
+        initializeFields(newCourse);
 
         //retrieve the information from the form controllers when the save button is clicked
         btnSaveCourse.setOnAction(new EventHandler<ActionEvent>() {
