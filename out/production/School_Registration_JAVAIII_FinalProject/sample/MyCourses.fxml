@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MyCoursesController">
+   <children>
+      <GridPane alignment="CENTER" layoutX="18.0" layoutY="16.0" prefHeight="369.0" prefWidth="564.0">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="My Courses" textAlignment="CENTER" GridPane.columnSpan="3" GridPane.halignment="CENTER">
+               <font>
+                  <Font name="Times New Roman Bold" size="25.0" />
+               </font>
+            </Label>
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="PRINT" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="DELETE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="120.0" text="EXIT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <TableView fx:id="courseTable" prefHeight="200.0" prefWidth="200.0" tableMenuButtonVisible="false" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
+              <columns>
+                <TableColumn fx:id="courseNameColumn" prefWidth="100.0" text="Course Name" />
+                <TableColumn fx:id="teacherNameColumn" prefWidth="100.0" text="Teacher Name" />
+                  <TableColumn fx:id="startDateColumn" prefWidth="90.0" text="Start Date" />
+                  <TableColumn fx:id="finishDateColumn" prefWidth="90.0" text="Finish Date" />
+                  <TableColumn fx:id="gradeColumn" prefWidth="90.0" text="Grade" />
+                  <TableColumn fx:id="approvedColumn" prefWidth="92.0" text="Approved" />
+              </columns>
+            </TableView>
+         </children>
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="427.0" minWidth="10.0" prefWidth="191.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="361.0" minWidth="10.0" prefWidth="194.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="361.0" minWidth="10.0" prefWidth="180.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="118.0" minHeight="10.0" prefHeight="59.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="254.0" minHeight="10.0" prefHeight="80.0" valignment="CENTER" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="233.0" minHeight="10.0" prefHeight="71.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="233.0" minHeight="10.0" prefHeight="78.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="233.0" minHeight="10.0" prefHeight="82.0" vgrow="SOMETIMES" />
+         </rowConstraints>
+      </GridPane>
+   </children>
+</Pane>
