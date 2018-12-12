@@ -1,6 +1,12 @@
 package sample;
 
+import Contract.ICourse;
+import Contract.IRegistration;
+import Contract.IUser;
 import Entities.Course;
+import Entities.Registration;
+import Entities.User;
+import Spring.SQLConfig;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,9 +20,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class StudentRegController {
 
@@ -31,38 +39,78 @@ public class StudentRegController {
     @FXML
     private TableColumn<Course, String> finishDateColumn;
 
+    private User userLoggedIn;
+
     public ArrayList<Course> courses;
 
-    @FXML
-    private void initialize() {
 
-//        courses = MyCoursesController.generateCourseList();
-//        populateList(courses);
+    //do the injections to get access to the database
+    //read spring config java class
+    AnnotationConfigApplicationContext context =
+            new AnnotationConfigApplicationContext(SQLConfig.class);
+
+    //get the bean from the bean factory and inject the necessary dependency
+    ICourse sqlCourse = context.getBean("courseRepository", ICourse.class);
+    IUser sqlUser = context.getBean("userRepository", IUser.class);
+    IRegistration sqlReg = context.getBean("registrationRepository", IRegistration.class);
+
+    @FXML
+    public void initialize(User user) {
+
+        userLoggedIn = user;
+        populateListCourses();
+
+
 
     }
 
+    //remove for the total pool of courses, the courses to which the user is already registered
+    private List<Course> removeReg(User user) {
 
-    public void populateList(ArrayList<Course> courses) {
+        List<Course> cleanReg = new ArrayList<>();
 
-        ObservableList<Course> listofCourses = FXCollections.observableArrayList(courses);
+        //get all the registrations from the Registration table
+        List<Course> allCourses = sqlCourse.getAllCourses();
+
+        List<Course> stdCourse = sqlCourse.getCourseByStudent(user.getId());
+
+        allCourses.remove(stdCourse);
+
+//        if(stdCourse.size() > 0) {
+//
+//            for(Course itemCourse : allCourses) {
+//
+//                for(Course itemReg : stdCourse) {
+//
+//                    if (itemCourse.getId() != itemReg.getId()) {
+//
+//                        cleanReg.add(itemCourse);
+//                    }
+//                }
+//            }
+//        } else {
+//
+//            cleanReg = allCourses;
+//        }
+        
+        return allCourses;
+    }
+
+
+    public void populateListCourses() {
+
+        //call the removeReg method to return a list containing only the course to which the user is not registered
+        List<Course> nonRegisteredCourses = removeReg(userLoggedIn);
+
+
+        ObservableList<Course> listofCourses = FXCollections.observableArrayList(nonRegisteredCourses);
 
         courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
-        teacherNameColumn.setCellValueFactory(new PropertyValueFactory<>("teacherName"));
+        teacherNameColumn.setCellValueFactory(new PropertyValueFactory<>("teacher"));
         startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
         finishDateColumn.setCellValueFactory(new PropertyValueFactory<>("finishDate"));
 
-
         listCourses.setItems(listofCourses);
-
-        //code to detect an event by a click
-//        table.setOnMouseClicked((MouseEvent event) -> {
-//            if (event.getButton().equals(MouseButton.PRIMARY)) {
-//                int index = table.getSelectionModel().getSelectedIndex();
-//                Person person = table.getItems().get(index);
-//                System.out.println(person);
-//            }
-//        });
-
 
     }
 
@@ -102,5 +150,16 @@ public class StudentRegController {
         }
 
     }
+
+    //code to detect an event by a click
+//        table.setOnMouseClicked((MouseEvent event) -> {
+//            if (event.getButton().equals(MouseButton.PRIMARY)) {
+//                int index = table.getSelectionModel().getSelectedIndex();
+//                Person person = table.getItems().get(index);
+//                System.out.println(person);
+//            }
+//        });
+
+
 
 }
