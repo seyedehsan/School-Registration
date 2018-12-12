@@ -12,7 +12,7 @@
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainPage">
    <children>
       <Button fx:id="btnAdd" layoutX="13.0" layoutY="91.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="101.0" />
-      <Button layoutX="117.0" layoutY="91.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="101.0" text="Profile" />
+      <Button fx:id="btnMyCourses" layoutX="117.0" layoutY="91.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="101.0" text="My Courses" />
       <Button fx:id="btnRegister" layoutX="222.0" layoutY="91.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="101.0" text="Register" />
       <Button fx:id="btnCourseList" layoutX="327.0" layoutY="91.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="101.0" text="Course List" />
       <Button fx:id="btnCreateCourse" layoutX="432.0" layoutY="91.0" mnemonicParsing="false" prefHeight="97.0" prefWidth="101.0" text="Create Course" />

@@ -19,4 +19,6 @@ public interface IRegistration {
     void updateRegistration(Registration reg) throws Exception;
 
     int NumberRegistrationsInACourse (Course course);
+
+    Registration findRegByCourseByUser (Course course, User user);
 }

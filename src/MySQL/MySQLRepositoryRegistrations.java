@@ -7,6 +7,7 @@ import Entities.Registration;
 import Entities.User;
 import org.hibernate.Session;
 
+import javax.persistence.Query;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -199,5 +200,40 @@ public class MySQLRepositoryRegistrations implements Contract.IRegistration {
 
         return counter;
 
+    }
+
+    @Override
+    public Registration findRegByCourseByUser(Course course, User user) {
+
+        //get db context
+        Session session = context.getContext();
+
+        //begin transaction
+        session.beginTransaction();
+
+        //set the string for the query
+        String sql = "from Registration where student = :theStudent and course = :theCourse";
+
+        //assemble the query
+        Query query = session.createQuery(sql);
+
+        //determine the parameter of the where clause
+        query.setParameter("theStudent", user);
+        query.setParameter("theCourse", course);
+
+
+        //put the results in a list
+        List<Registration> registrations = query.getResultList();
+
+        Registration reg = registrations.get(0);
+
+        //commit transaction
+        session.getTransaction().commit();
+
+        session.close();
+
+        context.closeFactory();
+
+        return reg;
     }
 }

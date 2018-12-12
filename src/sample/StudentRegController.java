@@ -42,18 +42,15 @@ public class StudentRegController {
 
     @FXML
     private TableView<Course> selCourseList;
-
     @FXML
     private TableColumn<Course, String> selCourseNameColumn;
-
     @FXML
     private TableColumn<Course, String> selTeacherNameColumn;
-
     @FXML
     private TableColumn<Course, String> selStartDateColumn;
-
     @FXML
     private TableColumn<Course, String> selFinishDateColumn;
+
 
     private ObservableList<Course> listofCourses;
 

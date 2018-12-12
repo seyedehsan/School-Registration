@@ -32,6 +32,9 @@ public class MainPage {
     @FXML
     private Button btnRegister;
 
+    @FXML
+    private Button btnMyCourses;
+
     //do the injections to get access to the database
     //read spring config java class
     AnnotationConfigApplicationContext context =
@@ -48,6 +51,7 @@ public class MainPage {
         btnCourseList.setOnAction(e->{
 
             try {
+                
                 //get the loader
                 FXMLLoader l = new FXMLLoader(getClass().getResource("CourseList.fxml"));
 
@@ -138,6 +142,46 @@ public class MainPage {
                 System.out.println(ex);
             }
 
+
+        });
+
+        btnMyCourses.setOnAction(e->{
+
+            try {
+
+                //get the loader
+                FXMLLoader l = new FXMLLoader(getClass().getResource("MyCourses.fxml"));
+
+                Parent moreDetails = l.load();
+
+                //access courseRegistration controller
+                MyCoursesController mc = (MyCoursesController)l.getController();
+
+                //send a new Course to the initialize method on the CourseRegistration
+                //since it is a new course
+
+                User user = sqlUser.findUser((short)1);
+
+                mc.initialize(user);
+
+                Scene moreDetailsScene = new Scene(moreDetails);
+                Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                stage.hide();
+                stage.setScene(moreDetailsScene);
+                stage.show();
+
+            } catch (NullPointerException ex) {
+
+                System.out.println(ex);
+
+            } catch (IOException ex) {
+
+                System.out.println(ex);
+
+            } catch (Exception ex) {
+
+                System.out.println(ex);
+            }
 
         });
     }
