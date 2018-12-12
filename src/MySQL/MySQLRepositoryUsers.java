@@ -188,4 +188,40 @@ public class MySQLRepositoryUsers implements Contract.IUser {
 
         return accessLevels;
     }
+
+    @Override
+    public boolean isEmailUnique(String str) {
+
+        //get db context
+        Session session = context.getContext();
+
+        //begin transaction
+        session.beginTransaction();
+
+
+        //set the string for the query
+        String sql = "from User where email = :theEmail";
+
+        //assemble the query
+        Query query = session.createQuery(sql);
+
+        //determine the parameter of the where clause
+        query.setParameter("theEmail", str);
+
+        //put the results in a list
+        List<User> users = query.getResultList();
+
+        session.close();
+
+        context.closeFactory();
+
+        if(users.isEmpty()) {
+
+            return true;
+
+        } else {
+
+            return false;
+        }
+    }
 }

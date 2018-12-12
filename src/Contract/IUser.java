@@ -18,4 +18,6 @@ public interface IUser {
     void updateUser(User user) throws Exception;
 
     List<AccessLevel> getAccessLevels();
+
+    boolean isEmailUnique(String str);
 }
