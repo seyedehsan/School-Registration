@@ -11,8 +11,7 @@
       <change beforePath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/CourseRegistrationController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/CourseRegistrationController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/CourseRegistrationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/CourseRegistrationController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Contract/IUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Contract/IUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MySQL/MySQLRepositoryUsers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MySQL/MySQLRepositoryUsers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sample/CourseRegistrationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/CourseRegistrationController.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,7 +84,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="7604" />
+          <entry key="JAVA" value="7748" />
           <entry key="XML" value="1" />
         </counts>
       </usages-collector>
@@ -106,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/CourseRegistrationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1103">
-              <caret line="257" selection-start-line="257" selection-end-line="257" />
+            <state relative-caret-position="253">
+              <caret line="135" column="48" selection-start-line="135" selection-start-column="48" selection-end-line="135" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,40 +133,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Entities/AccessLevel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="42" column="26" lean-forward="true" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
-              <folding>
-                <element signature="e#675#676#0" expanded="true" />
-                <element signature="e#708#709#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Contract/IUser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/MySQL/MySQLRepositoryUsers.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="224" column="9" selection-start-line="224" selection-start-column="9" selection-end-line="224" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/CourseListController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
+            <state relative-caret-position="-912">
               <caret line="108" column="52" selection-start-line="108" selection-start-column="52" selection-end-line="108" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -248,10 +216,10 @@
         <option value="$PROJECT_DIR$/src/sample/Main.java" />
         <option value="$PROJECT_DIR$/src/sample/CourseListController.java" />
         <option value="$PROJECT_DIR$/src/sample/MainPage.java" />
-        <option value="$PROJECT_DIR$/src/sample/CourseRegistrationController.java" />
         <option value="$PROJECT_DIR$/src/Entities/AccessLevel.java" />
         <option value="$PROJECT_DIR$/src/Contract/IUser.java" />
         <option value="$PROJECT_DIR$/src/MySQL/MySQLRepositoryUsers.java" />
+        <option value="$PROJECT_DIR$/src/sample/CourseRegistrationController.java" />
       </list>
     </option>
   </component>
@@ -292,24 +260,6 @@
               <item name="School_Registration_JAVAIII_FinalProject" type="b2602c69:ProjectViewProjectNode" />
               <item name="School_Registration_JAVAIII_FinalProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Contract" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="School_Registration_JAVAIII_FinalProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="School_Registration_JAVAIII_FinalProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Entities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="School_Registration_JAVAIII_FinalProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="School_Registration_JAVAIII_FinalProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="MySQL" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="School_Registration_JAVAIII_FinalProject" type="b2602c69:ProjectViewProjectNode" />
-              <item name="School_Registration_JAVAIII_FinalProject" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="sample" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -330,7 +280,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544593692866" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544594897666" />
     <property name="dynamic.classpath" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -469,12 +419,12 @@
       <workItem from="1544497602319" duration="11083000" />
       <workItem from="1544537384874" duration="14092000" />
       <workItem from="1544560242069" duration="5619000" />
-      <workItem from="1544572338075" duration="15061000" />
+      <workItem from="1544572338075" duration="16226000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47157000" />
+    <option name="totallyTimeSpent" value="48322000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="810" extended-state="0" />
@@ -695,30 +645,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/CourseListController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="108" column="52" selection-start-line="108" selection-start-column="52" selection-end-line="108" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/MainPage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="259">
           <caret line="68" column="48" selection-start-line="68" selection-start-column="48" selection-end-line="68" selection-end-column="48" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/CourseRegistrationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1103">
-          <caret line="257" selection-start-line="257" selection-end-line="257" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -758,8 +688,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/MySQL/MySQLRepositoryUsers.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="224" column="9" selection-start-line="224" selection-start-column="9" selection-end-line="224" selection-end-column="9" />
+        <state relative-caret-position="611">
+          <caret line="223" column="25" lean-forward="true" selection-start-line="223" selection-start-column="25" selection-end-line="223" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CourseListController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-912">
+          <caret line="108" column="52" selection-start-line="108" selection-start-column="52" selection-end-line="108" selection-end-column="52" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/CourseRegistrationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="135" column="48" selection-start-line="135" selection-start-column="48" selection-end-line="135" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

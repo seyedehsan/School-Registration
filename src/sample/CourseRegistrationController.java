@@ -127,11 +127,13 @@ public class CourseRegistrationController {
 
                             //insert the new course in the database
                             sqlCourse.insertCourse(newCourse, teacher);
+                            returnPrevious(event);
 
                         } else {
 
                             newCourse.setTeacher(teacher);
                             sqlCourse.updateCourse(newCourse);
+                            returnPrevious(event);
 
                         }
 
@@ -268,6 +270,27 @@ public class CourseRegistrationController {
         }
 
     }
+
+//    public void goBack() {
+//
+//        try {
+//
+//            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("CourseList.fxml"));
+//
+//            Parent moreDetails = fxmlLoader.load();
+//
+//            Scene scene = new Scene(moreDetails);
+//            Stage stage = new Stage();
+//            stage.hide();
+//            stage.setScene(scene);
+//            stage.show();
+//
+//        } catch (Exception ex) {
+//
+//            System.out.println(ex);
+//        }
+//
+//    }
 
 
 }
