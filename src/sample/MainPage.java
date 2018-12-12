@@ -43,6 +43,8 @@ public class MainPage {
     @FXML
     protected Button btnCourses;
 
+    private User userLoggedIn;
+
 
     //do the injections to get access to the database
     //read spring config java class
@@ -53,7 +55,10 @@ public class MainPage {
 
 
     @FXML
-    private void initialize(){
+    public void initialize(String userEmail){
+
+        userLoggedIn = sqlUser.findUserByEmail(userEmail);
+
 
         btnCourses.setGraphic(imgCourse);
         btnEdit.setGraphic(imgEdit);
@@ -136,9 +141,8 @@ public class MainPage {
                 //send a new Course to the initialize method on the CourseRegistration
                 //since it is a new course
 
-                User user = sqlUser.findUser((short)2);
 
-                src.initialize(user);
+                src.initialize(userLoggedIn);
 
                 Scene moreDetailsScene = new Scene(moreDetails);
                 Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
@@ -178,9 +182,8 @@ public class MainPage {
                 //send a new Course to the initialize method on the CourseRegistration
                 //since it is a new course
 
-                User user = sqlUser.findUser((short)1);
 
-                mc.initialize(user);
+                mc.initialize(userLoggedIn);
 
                 Scene moreDetailsScene = new Scene(moreDetails);
                 Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();

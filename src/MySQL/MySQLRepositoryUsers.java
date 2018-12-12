@@ -211,6 +211,9 @@ public class MySQLRepositoryUsers implements Contract.IUser {
         //put the results in a list
         List<User> users = query.getResultList();
 
+        //commit transaction
+        session.getTransaction().commit();
+
         session.close();
 
         context.closeFactory();
@@ -223,5 +226,76 @@ public class MySQLRepositoryUsers implements Contract.IUser {
 
             return false;
         }
+    }
+
+    @Override
+    public boolean isPasswordCorrect(String email, String password) {
+
+        //get db context
+        Session session = context.getContext();
+
+        //begin transaction
+        session.beginTransaction();
+
+        //set the string for the query
+        String sql = "from User where email = :theEmail and pwd = :thePassword";
+
+        //assemble the query
+        Query query = session.createQuery(sql);
+
+        //determine the parameter of the where clause
+        query.setParameter("theEmail", email);
+        query.setParameter("thePassword", password);
+
+        //put the results in a list
+        List<User> users = query.getResultList();
+
+        //commit transaction
+        session.getTransaction().commit();
+
+        session.close();
+
+        context.closeFactory();
+
+        if(users.size() == 0) {
+
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public User findUserByEmail(String email) {
+
+        //get db context
+        Session session = context.getContext();
+
+        //begin transaction
+        session.beginTransaction();
+
+        //set the string for the query
+        String sql = "from User where email = :theEmail";
+
+        //assemble the query
+        Query query = session.createQuery(sql);
+
+        //determine the parameter of the where clause
+        query.setParameter("theEmail", email);
+
+
+        //put the results in a list
+        List<User> users = query.getResultList();
+
+
+        //commit transaction
+        session.getTransaction().commit();
+
+        session.close();
+
+        context.closeFactory();
+
+
+        return users.get(0);
     }
 }

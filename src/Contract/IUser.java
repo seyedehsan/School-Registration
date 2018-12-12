@@ -20,4 +20,8 @@ public interface IUser {
     List<AccessLevel> getAccessLevels();
 
     boolean isEmailUnique(String str);
+
+    boolean isPasswordCorrect(String email, String password);
+
+    User findUserByEmail (String email);
 }

@@ -8,7 +8,7 @@
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Register">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="559.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Register">
     <children>
         <Label layoutX="76.0" layoutY="87.0" text="Register Type" />
         <ComboBox fx:id="cmbType" layoutX="156.0" layoutY="83.0" prefHeight="25.0" prefWidth="350.0" />
@@ -22,7 +22,7 @@
          </toggleGroup></RadioButton>
         <RadioButton fx:id="genFemale" layoutX="445.0" layoutY="204.0" mnemonicParsing="false" text="Female" toggleGroup="$RadioTogle" />
         <Label layoutX="298.0" layoutY="204.0" text="Gender" />
-        <Label layoutX="52.0" layoutY="237.0" text="Phone Number" />
+        <Label layoutX="60.0" layoutY="237.0" text="Email Address" />
         <TextField fx:id="txtEmail" layoutX="156.0" layoutY="235.0" prefHeight="25.0" prefWidth="350.0" />
         <Label layoutX="90.0" layoutY="279.0" text="Address" />
         <TextField fx:id="txtAddress" layoutX="156.0" layoutY="275.0" prefHeight="25.0" prefWidth="350.0" />
@@ -35,7 +35,7 @@
         <Label layoutX="87.0" layoutY="393.0" text="Password" />
         <TextField fx:id="txtPassword" layoutX="156.0" layoutY="392.0" prefHeight="25.0" prefWidth="189.0" />
         <Button fx:id="btnPassword" layoutX="357.0" layoutY="392.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Generate Password" />
-        <Button fx:id="btnCancel" layoutX="156.0" layoutY="436.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Cancel" />
+        <Button fx:id="btnBack" layoutX="156.0" layoutY="436.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Back" />
         <Button fx:id="btnRegister" layoutX="357.0" layoutY="436.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="149.0" text="Register" />
     </children>
 </Pane>
