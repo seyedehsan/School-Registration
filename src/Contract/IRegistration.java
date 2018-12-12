@@ -14,7 +14,7 @@ public interface IRegistration {
 
     void deleteRegistration(Registration reg) throws Exception;
 
-    void insertRegistration(Registration reg, User student, Course course) throws Exception;
+    void insertRegistration(User student, Course course) throws Exception;
 
     void updateRegistration(Registration reg) throws Exception;
 

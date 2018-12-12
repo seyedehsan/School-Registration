@@ -16,6 +16,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -39,9 +40,39 @@ public class StudentRegController {
     @FXML
     private TableColumn<Course, String> finishDateColumn;
 
-    private User userLoggedIn;
+    @FXML
+    private TableView<Course> selCourseList;
 
-    public ArrayList<Course> courses;
+    @FXML
+    private TableColumn<Course, String> selCourseNameColumn;
+
+    @FXML
+    private TableColumn<Course, String> selTeacherNameColumn;
+
+    @FXML
+    private TableColumn<Course, String> selStartDateColumn;
+
+    @FXML
+    private TableColumn<Course, String> selFinishDateColumn;
+
+    private ObservableList<Course> listofCourses;
+
+    private ObservableList<Course> listSelCourses;
+
+    @FXML
+    private Button btnAdd;
+
+    @FXML
+    private Button btnRemove;
+
+    @FXML
+    private Button btnCancel;
+
+    @FXML
+    private Button btnRegister;
+
+
+    private User userLoggedIn;
 
 
     //do the injections to get access to the database
@@ -57,62 +88,155 @@ public class StudentRegController {
     @FXML
     public void initialize(User user) {
 
+        //grab the information from the logged user
         userLoggedIn = user;
-        populateListCourses();
 
+        //call the removeReg method to return a list containing only the course to which the user is not registered
+        List<Course> nonRegisteredCourses = removeReg(userLoggedIn);
 
+        //initialize the collection with the correspondent lists
+        listofCourses = FXCollections.observableArrayList(nonRegisteredCourses);
+        listSelCourses = FXCollections.observableArrayList(new ArrayList<>());
 
+        //set the factory for the columns
+        courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+        teacherNameColumn.setCellValueFactory(new PropertyValueFactory<>("teacher"));
+        startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        finishDateColumn.setCellValueFactory(new PropertyValueFactory<>("finishDate"));
+
+        selCourseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
+        selTeacherNameColumn.setCellValueFactory(new PropertyValueFactory<>("teacher"));
+        selStartDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+        selFinishDateColumn.setCellValueFactory(new PropertyValueFactory<>("finishDate"));
+
+        //assign the items of each table
+        listCourses.setItems(listofCourses);
+
+        selCourseList.setItems(listSelCourses);
+
+        //when click add, remove from one list and add in another
+        btnAdd.setOnAction(e->{
+
+            int index = listCourses.getSelectionModel().getSelectedIndex();
+
+            if(index>-1) {
+
+                Course courseSelected = listCourses.getItems().get(index);
+
+                listofCourses.remove(courseSelected);
+                listSelCourses.add(courseSelected);
+
+                listCourses.setItems(listofCourses);
+                selCourseList.setItems(listSelCourses);
+            }
+        });
+
+        //click remove, remove from one list to add in the other one
+        btnRemove.setOnAction(e-> {
+
+            int index = selCourseList.getSelectionModel().getSelectedIndex();
+
+            if(index>-1) {
+
+                Course courseSelected = selCourseList.getItems().get(index);
+
+                listofCourses.add(courseSelected);
+                listSelCourses.remove(courseSelected);
+
+                listCourses.setItems(listofCourses);
+                selCourseList.setItems(listSelCourses);
+            }
+        });
+
+        btnCancel.setOnAction(e->{
+
+            try {
+                //get the loader
+                FXMLLoader l = new FXMLLoader(getClass().getResource("mainpage.fxml"));
+
+                Parent moreDetails = l.load();
+
+                Scene moreDetailsScene = new Scene(moreDetails);
+                Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                stage.hide();
+                stage.setScene(moreDetailsScene);
+                stage.show();
+
+            } catch (Exception ex) {
+
+                System.out.println(ex);
+            }
+        });
+
+        //save the registration
+        btnRegister.setOnAction(e->{
+
+            try {
+                //do a foreach in the list of courses selected
+                for (Course items : listSelCourses) {
+
+                    //foreach Course decrease by 1 the seatsAvailable in the course
+                    short seats = items.getSeatsAvailable();
+                    if(seats>0) {
+                        items.setSeatsAvailable(seats--);
+                    }
+                    //update the course in the database with the new seatsAvailable
+                    sqlCourse.updateCourse(items);
+                    //save the registration
+                    sqlReg.insertRegistration(userLoggedIn, items);
+
+                }
+            } catch (Exception ex) {
+
+                System.out.println(ex);
+            }
+
+            //** pop-up window saying the course was saved **
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Confirmation");
+            alert.setContentText("Your registration has been saved !");
+            alert.showAndWait();
+
+            initialize(userLoggedIn);
+
+        });
     }
 
     //remove for the total pool of courses, the courses to which the user is already registered
     private List<Course> removeReg(User user) {
 
-        List<Course> cleanReg = new ArrayList<>();
+        List<Course> cleanCourse = new ArrayList<>();
 
         //get all the registrations from the Registration table
         List<Course> allCourses = sqlCourse.getAllCourses();
 
         List<Course> stdCourse = sqlCourse.getCourseByStudent(user.getId());
 
-        allCourses.remove(stdCourse);
+        //allCourses.remove(stdCourse);
 
-//        if(stdCourse.size() > 0) {
-//
-//            for(Course itemCourse : allCourses) {
-//
-//                for(Course itemReg : stdCourse) {
-//
-//                    if (itemCourse.getId() != itemReg.getId()) {
-//
-//                        cleanReg.add(itemCourse);
-//                    }
-//                }
-//            }
-//        } else {
-//
-//            cleanReg = allCourses;
-//        }
-        
-        return allCourses;
+        if(stdCourse.size() > 0) {
+
+            for(Course itemCourse : allCourses) {
+
+                for(Course itemReg : stdCourse) {
+
+                    //eliminate the courses to which the student is registered
+                    //and also the courses which the number of seats is equal to zero
+                    if (itemCourse.getId() != itemReg.getId() ||
+                        itemCourse.getSeatsAvailable() != 0) {
+
+                        cleanCourse.add(itemCourse);
+                    }
+                }
+            }
+        } else {
+
+            cleanCourse = allCourses;
+        }
+
+        return cleanCourse;
     }
 
-
-    public void populateListCourses() {
-
-        //call the removeReg method to return a list containing only the course to which the user is not registered
-        List<Course> nonRegisteredCourses = removeReg(userLoggedIn);
-
-
-        ObservableList<Course> listofCourses = FXCollections.observableArrayList(nonRegisteredCourses);
-
-        courseNameColumn.setCellValueFactory(new PropertyValueFactory<>("courseName"));
-        teacherNameColumn.setCellValueFactory(new PropertyValueFactory<>("teacher"));
-        startDateColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
-        finishDateColumn.setCellValueFactory(new PropertyValueFactory<>("finishDate"));
-
-        listCourses.setItems(listofCourses);
-
-    }
 
     @FXML
     public void displayMoreDetails(ActionEvent e) throws IOException {
@@ -133,7 +257,7 @@ public class StudentRegController {
 
             //then on the cd you will access your functions
             //then you can pass the object
-            cd.initialize(courseSelected);
+            cd.initialize(courseSelected, userLoggedIn);
 
             Scene moreDetailsScene = new Scene(moreDetails);
             Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();

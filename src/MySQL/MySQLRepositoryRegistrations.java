@@ -92,7 +92,7 @@ public class MySQLRepositoryRegistrations implements Contract.IRegistration {
     }
 
     @Override
-    public void insertRegistration(Registration reg, User student, Course course) throws Exception {
+    public void insertRegistration(User student, Course course) throws Exception {
 
         Session session = context.getContext();
 
@@ -117,6 +117,8 @@ public class MySQLRepositoryRegistrations implements Contract.IRegistration {
 
             throw new Exception("Please assign a student for a registration");
         }
+
+        Registration reg = new Registration();
 
         //set the timestamp for the date and time of registration
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
@@ -153,7 +155,7 @@ public class MySQLRepositoryRegistrations implements Contract.IRegistration {
 
         if(regToEdit != null) {
 
-            session.save(regToEdit);
+            session.saveOrUpdate(regToEdit);
         } else {
             throw new Exception("Course not found");
         }

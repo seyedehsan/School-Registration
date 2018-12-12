@@ -1,6 +1,7 @@
 package sample;
 
 import Entities.Course;
+import Entities.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,17 +33,21 @@ public class CourseDetails {
     @FXML
     private Label seatsAvailable;
 
-    private Course course;
-
-    public CourseDetails() {
+    private User userLoggedIn;
 
 
-    }
+    protected void initialize(Course course, User user) {
 
+            userLoggedIn = user;
 
-    protected void initialize(Course course) {
-
-
+            courseName.setText(course.getCourseName());
+            numberHours.setText(String.valueOf(course.getNumberOfHours()));
+            teacher.setText(course.getTeacher().toString());
+            startDate.setText(course.getStartDate());
+            finishDate.setText(course.getFinishDate());
+            nSeats.setText(String.valueOf(course.getTotalSeats()));
+            courseDescript.setText(course.getCourseDescription());
+            seatsAvailable.setText(String.valueOf(course.getSeatsAvailable()));
 
     }
 
@@ -52,6 +57,10 @@ public class CourseDetails {
         FXMLLoader l = new FXMLLoader(getClass().getResource("StudentRegistration.fxml"));
 
         Parent sreg = l.load();
+
+        StudentRegController reg = (StudentRegController)l.getController();
+
+        reg.initialize(userLoggedIn);
 
         Scene sregScene = new Scene(sreg);
 
