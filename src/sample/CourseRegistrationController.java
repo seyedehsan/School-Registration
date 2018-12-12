@@ -256,7 +256,6 @@ public class CourseRegistrationController {
 
             Parent moreDetails = l.load();
 
-
             Scene moreDetailsScene = new Scene(moreDetails);
             Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
             stage.hide();

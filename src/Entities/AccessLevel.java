@@ -37,4 +37,9 @@ public class AccessLevel {
 
         this.accessType = accessType;
     }
+
+    @Override
+    public String toString() {
+        return accessType;
+    }
 }

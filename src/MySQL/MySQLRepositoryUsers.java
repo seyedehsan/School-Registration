@@ -167,4 +167,25 @@ public class MySQLRepositoryUsers implements Contract.IUser {
         context.closeFactory();
 
     }
+
+    @Override
+    public List<AccessLevel> getAccessLevels() {
+
+        //get db context
+        Session session = context.getContext();
+
+        //begin transaction
+        session.beginTransaction();
+
+        List<AccessLevel> accessLevels = session.createQuery("from AccessLevel").getResultList();
+
+        //commit transaction
+        session.getTransaction().commit();
+
+        session.close();
+
+        context.closeFactory();
+
+        return accessLevels;
+    }
 }
