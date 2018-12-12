@@ -19,21 +19,30 @@ import java.io.IOException;
 
 public class MainPage {
     @FXML
-    protected Button btnAdd;
+    protected ImageView imgCourse;
     @FXML
-    protected ImageView img;
+    protected ImageView imgEdit;
+    @FXML
+    protected ImageView imgRegister;
+    @FXML
+    protected ImageView imgCreate;
+    @FXML
+    protected ImageView imgCreateCourse;
+    @FXML
+    protected ImageView imgManage;
+    @FXML
+    protected Button btnManage;
+    @FXML
+    protected Button btnCreateCourse;
+    @FXML
+    protected Button btnCreate;
+    @FXML
+    protected Button btnRegister;
+    @FXML
+    protected Button btnEdit;
+    @FXML
+    protected Button btnCourses;
 
-    @FXML
-    private Button btnCourseList;
-
-    @FXML
-    private Button btnCreateCourse;
-
-    @FXML
-    private Button btnRegister;
-
-    @FXML
-    private Button btnMyCourses;
 
     //do the injections to get access to the database
     //read spring config java class
@@ -46,9 +55,15 @@ public class MainPage {
     @FXML
     private void initialize(){
 
-        btnAdd.setGraphic(img);
+        btnCourses.setGraphic(imgCourse);
+        btnEdit.setGraphic(imgEdit);
+        btnRegister.setGraphic(imgRegister);
+        btnCreate.setGraphic(imgCreate);
+        btnCreateCourse.setGraphic(imgCreateCourse);
+        btnManage.setGraphic(imgManage);
 
-        btnCourseList.setOnAction(e->{
+        //btn to course management (edit and delete course)
+        btnManage.setOnAction(e->{
 
             try {
 
@@ -70,6 +85,7 @@ public class MainPage {
 
         });
 
+        //button to create a new course
         btnCreateCourse.setOnAction(e-> {
 
             try {
@@ -104,6 +120,7 @@ public class MainPage {
             }
         });
 
+        //Register new student
         btnRegister.setOnAction(e->{
 
             try {
@@ -145,7 +162,8 @@ public class MainPage {
 
         });
 
-        btnMyCourses.setOnAction(e->{
+        //list all the courses from the logged user
+        btnCourses.setOnAction(e->{
 
             try {
 
@@ -163,6 +181,37 @@ public class MainPage {
                 User user = sqlUser.findUser((short)1);
 
                 mc.initialize(user);
+
+                Scene moreDetailsScene = new Scene(moreDetails);
+                Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
+                stage.hide();
+                stage.setScene(moreDetailsScene);
+                stage.show();
+
+            } catch (NullPointerException ex) {
+
+                System.out.println(ex);
+
+            } catch (IOException ex) {
+
+                System.out.println(ex);
+
+            } catch (Exception ex) {
+
+                System.out.println(ex);
+            }
+
+        });
+
+        //create a new User
+        btnCreate.setOnAction(e->{
+
+            try {
+
+                //get the loader
+                FXMLLoader l = new FXMLLoader(getClass().getResource("Register.fxml"));
+
+                Parent moreDetails = l.load();
 
                 Scene moreDetailsScene = new Scene(moreDetails);
                 Stage stage = (Stage)((Node)e.getSource()).getScene().getWindow();
