@@ -76,11 +76,19 @@ public class Course {
         return strStartDate;
     }
 
+    public Date getDateStart() {
+        return startDate;
+    }
+
     public String getFinishDate() {
 
         String strFinishDate = DateUtils.formatDate(finishDate);
 
         return strFinishDate;
+    }
+
+    public Date getDateFinish() {
+        return finishDate;
     }
 
     public short getTotalSeats() {

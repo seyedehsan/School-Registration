@@ -205,7 +205,8 @@ public class MySQLRepositoryCourse implements ICourse {
 
         if(courseToEdit != null) {
 
-            session.save(course);
+            session.saveOrUpdate(course);
+
         } else {
             throw new Exception("Course not found");
         }

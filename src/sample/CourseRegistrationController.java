@@ -10,10 +10,16 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -53,6 +59,8 @@ public class CourseRegistrationController {
     @FXML
     private Button btnReturn;
 
+    private boolean isNew = true;
+
 
     //do the injections to get access to the database
     //read spring config java class
@@ -73,6 +81,10 @@ public class CourseRegistrationController {
         //load the list of teacher in the combo box
         teacherCombo.setItems(listOfTeachers);
 
+        if(theCourse != null) {
+
+            isNew = false;
+        }
         //create a new course object
         Course newCourse = theCourse;
 
@@ -109,8 +121,16 @@ public class CourseRegistrationController {
                         //get the teacher object from the comboBox, cast to User type
                         User teacher = (User)teacherCombo.getSelectionModel().getSelectedItem();
 
-                        //insert the new course in the database
-                        sqlCourse.insertCourse(newCourse, teacher);
+                        if(isNew) {
+
+                            //insert the new course in the database
+                            sqlCourse.insertCourse(newCourse, teacher);
+
+                        } else {
+
+                            newCourse.setTeacher(teacher);
+                            sqlCourse.updateCourse(newCourse);
+                        }
 
                         //** pop-up window saying the course was saved **
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -145,14 +165,18 @@ public class CourseRegistrationController {
 
     public void initializeFields(Course course) {
 
-      //correct the return type of getStartDate on the course, and adapt the list thing
-        //create an additional getter that returns as date type
+        //get the data from course as date.util and convert to local.date
+        Date start = course.getDateStart();
+        LocalDate dateStart = start.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        Date end = course.getDateFinish();
+        LocalDate dateEnd = end.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
         courseName.setText(course.getCourseName());
         numberOfHours.setText(String.valueOf(course.getNumberOfHours()));
         teacherCombo.getSelectionModel().select(course.getTeacher());
-//        startDatePicker.setValue(course.getStartDate());
-//        finishDatePicker.setValue(course.getFinishDate());
+        startDatePicker.setValue(dateStart);
+        finishDatePicker.setValue(dateEnd);
         numberOfSeats.setText(String.valueOf(course.getTotalSeats()));
         courseDescription.setText(course.getCourseDescription());
     }
@@ -219,6 +243,28 @@ public class CourseRegistrationController {
         courseDescription.setText(null);
     }
 
+    @FXML
+    public void returnPrevious(ActionEvent event) {
 
+        try {
+            //get the loader
+            FXMLLoader l = new FXMLLoader(getClass().getResource("CourseList.fxml"));
+
+
+            Parent moreDetails = l.load();
+
+
+            Scene moreDetailsScene = new Scene(moreDetails);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.hide();
+            stage.setScene(moreDetailsScene);
+            stage.show();
+
+        } catch (IOException ex) {
+
+            System.out.println(ex);
+        }
+
+    }
 
 }

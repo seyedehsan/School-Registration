@@ -152,7 +152,7 @@ public class MySQLRepositoryUsers implements Contract.IUser {
         //check if the user exist
         if (userToEdit != null) {
 
-            session.save(userToEdit);
+            session.saveOrUpdate(userToEdit);
 
         } else {
 
