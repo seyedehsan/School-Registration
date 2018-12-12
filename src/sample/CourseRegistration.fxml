@@ -43,7 +43,7 @@
             <TextArea fx:id="courseDescription" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.rowSpan="2" />
             <Button fx:id="btnClear" mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" text="CLEAR" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
             <Button fx:id="btnSaveCourse" mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" text="SAVE" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
-            <Label text="Create a Course" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+            <Label text="Course" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.halignment="CENTER">
                <font>
                   <Font name="Times New Roman Bold" size="20.0" />
                </font>

@@ -13,10 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -109,6 +106,7 @@ public class CourseListController {
 
                 //then on the cd you will access your functions
                 //then you can pass the object
+                cd.initializeFields(courseSelected);
                 cd.initialize(courseSelected);
 
                 Scene moreDetailsScene = new Scene(moreDetails);
@@ -130,16 +128,74 @@ public class CourseListController {
 
     }
 
+    //action to delete course
     @FXML
     public void deleteCourse(ActionEvent event) {
 
+        try {
+
+            //get the index of the chosen option
+            int index = tableCourses.getSelectionModel().getSelectedIndex();
+
+            //check if the user chose any option
+            if(index != -1) {
+                //if yes, get the object selected by the user
+                Course courseSelected = tableCourses.getItems().get(index);
+
+                //pop up a window asking the user to confirm the deletion
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+                        "Are you sure you want to delete the course " + courseSelected + " ?",
+                        ButtonType.YES, ButtonType.CANCEL);
+                alert.showAndWait();
+
+                if (alert.getResult() == ButtonType.YES) {
+
+                    sqlCourse.deleteCourse(courseSelected);
+                    initialize();
+
+                } else {
+
+                    initialize();
+                }
+
+
+            } else {
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setHeaderText("Error message");
+                errorAlert.setContentText("Please choose at list one course from the list");
+                errorAlert.showAndWait();
+            }
+
+        } catch ( Exception ex) {
+
+            System.out.println(ex);
+        }
+
+
     }
 
+    //return to the main page
+    @FXML
+    public void returnMain (ActionEvent event) {
+
+        try {
+            //get the loader
+            FXMLLoader l = new FXMLLoader(getClass().getResource("mainpage.fxml"));
+
+            Parent moreDetails = l.load();
+
+            Scene moreDetailsScene = new Scene(moreDetails);
+            Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            stage.hide();
+            stage.setScene(moreDetailsScene);
+            stage.show();
+
+        } catch (Exception ex) {
+
+            System.out.println(ex);
+        }
 
 
-
-
-
-
+    }
 
 }

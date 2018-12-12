@@ -75,20 +75,22 @@ public class CourseRegistrationController {
     @FXML
     public void initialize(Course theCourse) {
 
+
+        //create a new course object
+        Course newCourse = theCourse;
+
         //create list of Users of Access Level 2 = teacher
         ObservableList<User> listOfTeachers = FXCollections.observableArrayList(sqlUser.getUserByAccess((short)2));
 
         //load the list of teacher in the combo box
         teacherCombo.setItems(listOfTeachers);
 
-        if(theCourse != null) {
+        if(newCourse.getId() != 0) {
 
             isNew = false;
-        }
-        //create a new course object
-        Course newCourse = theCourse;
 
-        initializeFields(newCourse);
+
+        }
 
         //retrieve the information from the form controllers when the save button is clicked
         btnSaveCourse.setOnAction(new EventHandler<ActionEvent>() {
@@ -130,6 +132,7 @@ public class CourseRegistrationController {
 
                             newCourse.setTeacher(teacher);
                             sqlCourse.updateCourse(newCourse);
+
                         }
 
                         //** pop-up window saying the course was saved **
@@ -266,5 +269,6 @@ public class CourseRegistrationController {
         }
 
     }
+
 
 }

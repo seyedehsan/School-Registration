@@ -138,11 +138,8 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
-                "courseName='" + courseName + '\'' +
-                ", numberOfHours=" + numberOfHours +
-                ", teacher=" + teacher.getFirstName() + teacher.getLastName() +
-                '}';
+        return  courseName + ", numberOfHours: " + numberOfHours +
+                ", Teacher: " + teacher.getFirstName() + teacher.getLastName();
     }
 
 
