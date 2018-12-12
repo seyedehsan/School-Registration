@@ -51,7 +51,7 @@ public class MainPage {
         btnCourseList.setOnAction(e->{
 
             try {
-                
+
                 //get the loader
                 FXMLLoader l = new FXMLLoader(getClass().getResource("CourseList.fxml"));
 

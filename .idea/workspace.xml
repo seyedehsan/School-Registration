@@ -16,15 +16,11 @@
       <change beforePath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/CourseRegistrationController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/CourseRegistrationController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/CourseRegistrationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/CourseRegistrationController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/MyCourses.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/MyCourses.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/MyCoursesController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/MyCoursesController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/StudentRegController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/StudentRegController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/StudentRegistration.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/School_Registration_JAVAIII_FinalProject/sample/StudentRegistration.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Contract/IRegistration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Contract/IRegistration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MySQL/MySQLRepositoryRegistrations.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MySQL/MySQLRepositoryRegistrations.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/MainPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MainPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/MyCourses.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MyCourses.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/MyCoursesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/MyCoursesController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/StudentRegController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/StudentRegController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/mainpage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/mainpage.fxml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -124,8 +120,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/MainPage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="795">
-              <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+            <state relative-caret-position="768">
+              <caret line="53" selection-start-line="53" selection-end-line="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -256,7 +252,7 @@
     <property name="OverrideImplement.combined" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544631929222" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544636601008" />
     <property name="dynamic.classpath" value="false" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -395,18 +391,17 @@
       <workItem from="1544497602319" duration="11083000" />
       <workItem from="1544537384874" duration="14092000" />
       <workItem from="1544560242069" duration="5619000" />
-      <workItem from="1544572338075" duration="37936000" />
+      <workItem from="1544572338075" duration="38573000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="70032000" />
+    <option name="totallyTimeSpent" value="70669000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="810" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2639485" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2639485" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Persistence" order="3" side_tool="true" />
@@ -417,7 +412,7 @@
       <window_info anchor="bottom" id="Java Enterprise" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.33008358" />
+      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.33008358" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.39972144" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -707,8 +702,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/MainPage.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="16" />
+        <state relative-caret-position="768">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
