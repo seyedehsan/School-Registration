@@ -199,13 +199,13 @@ public class MySQLRepositoryCourse implements ICourse {
         //begin transaction
         session.beginTransaction();
 
-        Course courseToEdit = findCourse(course.getId());
+        Course courseToEdit = course;
 
         //check if the course exist
 
         if(courseToEdit != null) {
 
-            session.saveOrUpdate(course);
+            session.saveOrUpdate(courseToEdit);
 
         } else {
             throw new Exception("Course not found");

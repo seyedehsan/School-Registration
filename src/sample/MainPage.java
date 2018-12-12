@@ -115,7 +115,7 @@ public class MainPage {
                 //send a new Course to the initialize method on the CourseRegistration
                 //since it is a new course
 
-                User user = sqlUser.findUser((short)1);
+                User user = sqlUser.findUser((short)2);
 
                 src.initialize(user);
 

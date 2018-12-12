@@ -178,7 +178,7 @@ public class StudentRegController {
                     //foreach Course decrease by 1 the seatsAvailable in the course
                     short seats = items.getSeatsAvailable();
                     if(seats>0) {
-                        items.setSeatsAvailable(seats--);
+                        items.setSeatsAvailable(--seats);
                     }
                     //update the course in the database with the new seatsAvailable
                     sqlCourse.updateCourse(items);
@@ -205,36 +205,39 @@ public class StudentRegController {
     //remove for the total pool of courses, the courses to which the user is already registered
     private List<Course> removeReg(User user) {
 
-        List<Course> cleanCourse = new ArrayList<>();
+        List<Course> firstCheck = sqlCourse.getAllCourses();
+
+        List<Course> secondCheck = new ArrayList<>();
 
         //get all the registrations from the Registration table
         List<Course> allCourses = sqlCourse.getAllCourses();
 
         List<Course> stdCourse = sqlCourse.getCourseByStudent(user.getId());
 
-        //allCourses.remove(stdCourse);
-
-        if(stdCourse.size() > 0) {
-
-            for(Course itemCourse : allCourses) {
-
-                for(Course itemReg : stdCourse) {
-
-                    //eliminate the courses to which the student is registered
-                    //and also the courses which the number of seats is equal to zero
-                    if (itemCourse.getId() != itemReg.getId() ||
-                        itemCourse.getSeatsAvailable() != 0) {
-
-                        cleanCourse.add(itemCourse);
-                    }
-                }
+        //iterate the courses to which that student is registered
+        for(Course i : stdCourse) {
+            //if the list of all courses contains that course it will remove from first check list
+            if(allCourses.contains(i)) {
+                firstCheck.remove(i);
             }
-        } else {
+        }
+        //copy first check list to a secondCheck list
+        for(Course i : firstCheck) {
 
-            cleanCourse = allCourses;
+            secondCheck.add(i);
         }
 
-        return cleanCourse;
+        //iterate the firstCheck list
+        for(Course i : firstCheck) {
+
+            //if any of the courses inside the firstCheck list has 0 spots available, remove that course from the list
+            if(i.getSeatsAvailable() == 0) {
+                secondCheck.remove(i);
+            }
+        }
+        //return the secondCheck list which is in fact the list of all courses minus courses registered for that user
+        //and courses with 0 seats available
+        return secondCheck;
     }
 
 
