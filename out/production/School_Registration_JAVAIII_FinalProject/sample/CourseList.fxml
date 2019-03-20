@@ -29,7 +29,7 @@
             </Label>
             <Button fx:id="btnEdit" mnemonicParsing="false" onAction="#editCourse" prefHeight="25.0" prefWidth="75.0" text="EDIT" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
             <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#deleteCourse" prefHeight="25.0" prefWidth="75.0" text="DELETE" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-            <Button fx:id="btnBack" mnemonicParsing="false" prefHeight="27.0" prefWidth="75.0" text="BACK" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Button fx:id="btnBack" mnemonicParsing="false" onAction="#returnMain" prefHeight="27.0" prefWidth="75.0" text="BACK" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
             <TableView fx:id="tableCourses" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 11;" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="3">
               <columns>
                 <TableColumn fx:id="courseNameColumn" prefWidth="107.0" text="Course Name" />

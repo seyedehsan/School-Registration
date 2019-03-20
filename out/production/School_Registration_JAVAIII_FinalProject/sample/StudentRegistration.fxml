@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.StudentRegController">
    <children>
       <GridPane layoutX="12.0" layoutY="18.0" prefHeight="435.0" prefWidth="719.0">
@@ -20,14 +23,14 @@
         </rowConstraints>
          <children>
             <Button mnemonicParsing="false" onAction="#displayMoreDetails" prefHeight="27.0" prefWidth="120.0" text="More Details" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="120.0" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="120.0" text="Register" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="110.0" text="&lt;&lt; Remove " GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Button fx:id="btnCancel" mnemonicParsing="false" prefHeight="27.0" prefWidth="120.0" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Button fx:id="btnRegister" mnemonicParsing="false" prefHeight="27.0" prefWidth="120.0" text="Register" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+            <Button fx:id="btnRemove" mnemonicParsing="false" prefHeight="27.0" prefWidth="110.0" text="&lt;&lt; Remove " GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="110.0" text="Add &gt;&gt;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <Button fx:id="btnAdd" mnemonicParsing="false" prefHeight="27.0" prefWidth="110.0" text="Add &gt;&gt;" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <font>
                   <Font size="14.0" />
                </font>
@@ -45,17 +48,17 @@
             <TableView fx:id="listCourses" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 10;" GridPane.rowIndex="1" GridPane.rowSpan="3">
               <columns>
                 <TableColumn fx:id="courseNameColumn" prefWidth="75.0" text="Course Name" />
-                <TableColumn fx:id="teacherNameColumn" prefWidth="75.0" text="Teacher Name" />
-                  <TableColumn fx:id="startDateColumn" prefWidth="70.0" text="Start Date" />
-                  <TableColumn fx:id="finishDateColumn" prefWidth="70.0" text="Finish Date" />
+                <TableColumn fx:id="teacherNameColumn" prefWidth="97.0" text="Teacher Name" />
+                  <TableColumn fx:id="startDateColumn" prefWidth="60.0" text="Start Date" />
+                  <TableColumn fx:id="finishDateColumn" prefWidth="67.0" text="Finish Date" />
               </columns>
             </TableView>
-            <TableView prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
+            <TableView fx:id="selCourseList" prefHeight="200.0" prefWidth="200.0" style="-fx-font-size: 10;" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="3">
               <columns>
-                <TableColumn prefWidth="90.0" text="Course Name" />
-                <TableColumn prefWidth="100.0" text="Teacher Name" />
-                  <TableColumn prefWidth="70.0" text="Start Date" />
-                  <TableColumn prefWidth="70.0" text="Finish Date" />
+                <TableColumn fx:id="selCourseNameColumn" prefWidth="81.0" text="Course Name" />
+                <TableColumn fx:id="selTeacherNameColumn" prefWidth="97.0" text="Teacher Name" />
+                  <TableColumn fx:id="selStartDateColumn" prefWidth="60.0" text="Start Date" />
+                  <TableColumn fx:id="selFinishDateColumn" prefWidth="62.0" text="Finish Date" />
               </columns>
             </TableView>
          </children>

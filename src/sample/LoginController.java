@@ -83,7 +83,8 @@ public class LoginController {
         //- this variable holds the email address of the authenticated user (logged in user)
         protected String currUserEmail;
 
-        private void initComponents(){
+
+        public void initComponents(){
             String mainPaneBackground = "-fx-background-image: url('/image/14283946_0fa478ed23_b.jpg');\n" +
                     " -fx-background-repeat: stretch;   \n" +
                     " -fx-background-size: 950 550;\n" +
@@ -158,7 +159,7 @@ public class LoginController {
                     this.currUserEmail = userName;
                     System.out.println("User entered password correct.");
                     this.lbLoginProgress.setText("Authentication successful. Loading your page...");
-                    loadMainPage(event);
+                    loadMainPage();
 
                 }
 
@@ -177,10 +178,10 @@ public class LoginController {
             }
         }
 
-        public void loadMainPage(ActionEvent event) {
+        public void loadMainPage() {
 
             try {
-                //get the loader
+
                 FXMLLoader l = new FXMLLoader(getClass().getResource("mainpage.fxml"));
 
                 Parent moreDetails = l.load();
@@ -191,7 +192,7 @@ public class LoginController {
 
 
                 Scene moreDetailsScene = new Scene(moreDetails);
-                Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                Stage stage = new Stage();
                 stage.hide();
                 stage.setScene(moreDetailsScene);
                 stage.show();
@@ -203,7 +204,8 @@ public class LoginController {
 
         }
 
-        }
+
+}
 
 
 
